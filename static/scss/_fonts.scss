@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Lasco';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/lasco-regular.eot');
+    src: url('../fonts/lasco-regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/lasco-regular.woff') format('woff'),
+    url('../fonts/lasco-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lasco-Bold';
+    font-weight: 700;
+    font-style: normal;
+
+    src: url('../fonts/lasco-bold.eot');
+    src: url('../fonts/lasco-bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/lasco-bold.woff') format('woff'),
+    url('../fonts/lasco-bold.ttf') format('truetype');
+}
+
+$Trebuchet: 'Trebuchet MS', Helvetica, sans-serif;
