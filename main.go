@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"html/template"
 	"io/ioutil"
@@ -13,11 +14,17 @@ var (
 	templFuncMap = make(template.FuncMap)
 )
 
+var (
+	staticDirF = flag.String("static", "./static", "Static files dir")
+)
+
 func main() {
+	flag.Parse()
+
 	router := gin.Default()
 
 	router.HTMLRender = createMyRender()
-	router.Static("/static", "./static")
+	router.Static("/static", *staticDirF)
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(200, "base", nil)
 	})
