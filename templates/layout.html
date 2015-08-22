@@ -1,0 +1,10 @@
+{{ define "layout" }}
+<section class="layout-two-col">
+    <section class="left">
+    {{ template "content" . }}
+    </section>
+    <section class="right">
+    {{ template "sidebar" .}}
+    </section>
+</section>
+{{ end }}

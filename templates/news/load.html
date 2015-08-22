@@ -1,0 +1,19 @@
+{{ range .Results }}
+<section class="news">
+    <section class="news-img">
+        <img src="{{ static }}{{ .Img }}">
+    </section>
+    <article class="news_article">
+        <header>
+            <section class="news-time-full">
+                <time> {{ .Datetime }} </time>
+                <a href="/news/{{ .Id }}/" class="news-full_a">Подробнее</a>
+            </section>
+            <p class="news-title">{{ .Title }}</p>
+        </header>
+        <p class="news-content_p">
+            {{ .Content }}
+        </p>
+    </article>
+</section>
+{{ end }}

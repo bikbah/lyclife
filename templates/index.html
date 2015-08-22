@@ -1,0 +1,63 @@
+{{define "title"}}LyceumLife{{end}}
+{{define "content"}}
+<div class="tabs">
+    <ul class="tab-links">
+        <li class="active"><a href="#tab1">7</a></li>
+        <li><a href="#tab2">8</a></li>
+        <li><a href="#tab3">9</a></li>
+        <li><a href="#tab4">10</a></li>
+        <li><a href="#tab5">11</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab active">
+            <a href="/class/2/">7А</a>
+            <a href="/class/3/">7Б</a>
+            <a href="/class/4/">7В</a>
+        </div>
+
+        <div id="tab2" class="tab">
+            <a href="/class/5/">8А</a>
+            <a href="/class/6/">8Б</a>
+            <a href="/class/7/">8В</a>
+        </div>
+
+        <div id="tab3" class="tab">
+            <a href="/class/8/">9А</a>
+            <a href="/class/9/">9Б</a>
+            <a href="/class/10/">9В</a>
+        </div>
+
+        <div id="tab4" class="tab">
+            <a href="/class/11/">10А</a>
+            <a href="/class/12/">10Б</a>
+            <a href="/class/13/">10В</a>
+        </div>
+
+        <div id="tab5" class="tab">
+            <a href="/class/14/">11А</a>
+            <a href="/class/15/">11Б</a>
+            <a href="/class/16/">11В</a>
+        </div>
+    </div>
+</div>
+<section class="youtube">
+    <section class="video">
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/9avBVzpgFKw" frameborder="0" allowfullscreen></iframe>
+    </section>
+    <a class="youtube-link" href="http://youtube.com/RbliChannel" target="_blank">
+        Перейти на наш канал Youtube
+    </a>
+</section>
+{{end}}
+{{define "sidebar"}}
+<header class="right_header">
+    <a class="news-list-link" href="/news/">
+        Новости
+    </a>
+    <a href="/news/1/create/">
+        <img class="right_header_img" src="{{ static }}svg/plus.svg">
+    </a>
+</header>
+{{news_load}}
+{{end}}

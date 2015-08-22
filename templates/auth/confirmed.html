@@ -1,0 +1,15 @@
+{{define "title"}}Потверждение{{end}}
+
+{{define "content"}}
+<section class="error-wrap">
+    {{if .Results}}
+    <h4>{{.Results}}<h4>
+    {{else}}
+    <h2>Спасибо, ваш адрес электронной почты потвержден.</h2>
+    {{end}}
+</section>
+{{end}}
+
+{{define "extra_meta"}}
+<meta http-equiv="refresh" content="3;url=/auth/login/" />
+{{end}}

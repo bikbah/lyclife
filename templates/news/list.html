@@ -1,0 +1,29 @@
+{{define "title"}}Новости{{end}}
+{{define "content"}}
+<section class="news-list-wrap">
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <div id="pagination">
+        {{range .Results}}
+        <a href="/news/{{ .Id }}/"></a>
+        {{end}}
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{static}}js/jquery-ias.min.js"></script>
+
+    <script type="text/javascript">
+        var ias = $.ias({
+          container: ".container",
+          item: ".item",
+          pagination: "#pagination",
+          next: ".next a",
+      });
+
+        ias.extension(new IASSpinnerExtension());
+        ias.extension(new IASTriggerExtension({offset: 10}));
+        ias.extension(new IASNoneLeftExtension({text: 'There are no more pages left to load.'}));
+    </script>
+</section>
+{{end}}

@@ -1,0 +1,66 @@
+{{define "title"}}Регистрация{{end}}
+{{define "content"}}
+<div class="links">
+    <a class="chain-link" href="/">Главная</a> >
+    <a class="chain-link" href="/auth/register/">Регистрация</a>
+</div>
+<section class="sign-up">
+    <header class="sign-up_header">Регистрация</header>
+    {{if .Results}}
+    <div class="sign-up-error">
+        {{.Results.Error}}
+    </div>
+    {{end}}
+    <form class="sign-up_form" action="/auth/register/" method="POST">
+        {{csrf_token .Context}}
+        <div class="row">
+            <label class="sign-up_radio"><input type="radio" name="who" checked value="student">Я ученик</label>
+            <label><input type="radio" name="who" value="teacher">Я учитель</label>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="lastname">Фамилия*</label>
+            <input class="Input-field" type="text" name="lastname" id="lastname" value="{{if .Results}}{{if .Results.NotOnlyError}}{{.Results.U.LastName}}{{end}}{{end}}" required autofocus>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="firstname">Имя*</label>
+            <input class="Input-field" type="text" name="firstname" id="firstname"  value="{{if .Results}}{{if .Results.NotOnlyError}}{{.Results.U.FirstName}}{{end}}{{end}}" required>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="middlename">Отчество</label>
+            <input class="Input-field" type="text" name="middlename" id="middlename"  value="{{if .Results}}{{if .Results.NotOnlyError}}{{.Results.U.MiddleName}}{{end}}{{end}}">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="email">Email*</label>
+            <input class="Input-field" type="text" name="email" id="email"  value="{{if .Results}}{{if .Results.NotOnlyError}}{{.Results.U.Email}}{{end}}{{end}}" required>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="class">Класс</label>
+            <select class="Input-field" id="class" name="rbli_class">
+                <option value="1">Выберите из списка</option>
+                <option value="2">7А</option>
+                <option value="3">7Б</option>
+                <option value="4">7В</option>
+                <option value="5">8А</option>
+                <option value="6">8Б</option>
+                <option value="7">8В</option>
+                <option value="8">9А</option>
+                <option value="9">9Б</option>
+                <option value="10">9В</option>
+                <option value="11">10А</option>
+                <option value="12">10Б</option>
+                <option value="13">10В</option>
+                <option value="14">11А</option>
+                <option value="15">11Б</option>
+                <option value="16">11В</option>
+            </select>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="password">Пароль*</label>
+            <input class="Input-field" type="password" id="password" name="password" required>
+        </div>
+        <div class="row">
+            <input class="Input-field" type="submit" value="Готово!">
+        </div>
+    </form>
+</section>
+{{end}}

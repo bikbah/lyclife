@@ -1,0 +1,24 @@
+{{define "title"}}Обновить{{end}}
+{{define "content"}}
+{{ $context := .Context }}
+{{with .Results}}
+<section class="news-create-wrap">
+    <header>
+        <h2>Обновить данные</h2>
+    </header>
+    <form action="/news/{{ .Id }}/update/" method="POST">
+        {{csrf_token $context}}
+        <input type="hidden" name="news_id" value="{{ .Id }}">
+        <div class="news-create-form-elem">
+            <input class="news-create-title" type="text" name="news_title" placeholder="Заголовок.." value="{{ .Title }}">
+        </div>
+        <div class="news-create-form-elem">
+            <textarea class="news-create-content" name="news_content">{{ .Content }}</textarea>
+        </div>
+        <div class="news-create-form-elem">
+            <input class="news-create-submit_button" type="submit" value="Сохранить">
+        </div>
+    </form>
+</section>
+{{end}}
+{{end}}

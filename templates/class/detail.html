@@ -1,0 +1,77 @@
+{{define "title"}}{{.Results.Title}}{{end}}
+{{define "content"}}
+<section class="board">
+    <div class="board-left">
+        <img class="board-left_img" src="{{static}}{{.Results.Tutor.Img}}" />
+        <div class="board-left-rating">
+            Рейтинг: 77
+            <img src="{{static}}img/thumb.png">
+        </div>
+    </div>
+    <article class="board-right">
+        <header class="board-right_h2">{{.Results.Tutor.LastName}} {{.Results.Tutor.FirstName}} {{ .Results.Tutor.MiddleName}}</header>
+        <p class="board-right-whois">Помощник воспитателя {{.Results.Title}} класса.</p>
+        {{markdown .Results.Tutor.Description}}
+        <a class="board-right-show" href="#">Показать полностью</a>
+    </article>
+</section>
+<section class="wall">
+    {{if .Results.WritePostAllowed}}
+    <section class="wall-message">
+        <form action="/news/{{.Results.Id}}/create/" method="POST">
+            {{csrf_token .Context}}
+            <textarea class="wall-message_textarea" name="news_content" rows="3" placeholder="Введите сообщение здесь.." required></textarea>
+            <button class="wall-send-message_button" type="submit">Отправить</button>
+        </form>
+    </section>
+    {{end}}
+    <section class="wall-content">
+        {{$deleteAllowed := .Results.DeletePostAllowed}}
+        {{ range .Results.Posts }}
+        <section class="post">
+            <section class="post-avatar">
+                <img src="{{static}}{{.Avatar}}" alt="Аватар">
+            </section>
+            <header class="post_header">
+                <time class="post-time">{{ .Datetime }}</time>
+                <p class="post-author">{{ .AuthorName }} {{ .AuthorSurname }}</p>
+            </header>
+            <article class="post_article">
+                {{if $deleteAllowed}}
+                <a href="/news/{{ .Id }}/delete/" class="post-delete_a"><img class="post-delete_img" src="{{ static }}svg/delete.svg"></a>
+                {{end}}
+                <p class="post-content">{{.Content}}</p>
+                <section class="post-like-comment">
+                    <button class="post-like_button">
+                        <span class="post-like_button_img">10</span>
+                        <span>Мне нравится</span>
+                    </button>
+                    <button class="post-comment_button">Комментировать</button>
+                </section>
+                {{if .Comments}}
+                <footer class="post_footer">
+                    {{range .Comments}}
+                    <section class="comment">
+                        <section class="comment-avatar">
+                            <img src="{{static}}{{.Avatar}}">
+                        </section>
+                        <article class="comment_article">
+                            <header>
+                                <time class="post-time">{{.Datetime}}</time>
+                                <p class="post-author">{{.AuthorName}} {{.AuthorSurname}}</p>
+                            </header>
+                            <p class="post-content">{{.Content}}</p>
+                        </article>
+                    </section>
+                    {{end}}
+                </footer>
+                {{end}}
+            </article>
+        </section>
+        {{end}}
+    </section>
+</section>
+{{end}}
+{{define "scripts"}}
+<script src="http://malsup.github.com/jquery.form.js"></script>
+{{end}}

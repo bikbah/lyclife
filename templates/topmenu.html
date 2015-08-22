@@ -1,0 +1,16 @@
+<div class="header-about"><a class="header-link" href="/about-us/"> О проекте</a></div>
+<div class="header-login">
+    {{if .User}}
+    <a href="/auth/profile/" class="profile">Профиль <span>{{.User.Email}}</span></a>
+    <a class="header-link" href="/auth/logout/">
+        <img src="{{static}}img/login_icon.png" />
+        <span>Выйти</span>
+    </a>
+    {{else}}
+    <a class="header-link" href="/auth/login/">
+        <img src="{{static}}img/login_icon.png" />
+        <span>Войти</span>
+    </a>
+    {{end}}
+</div>
+<!--{{range .Results}}<a href="{{.URL}}" class="{{if eq .URL `/`}}selected{{end}}">{{.Title}}</a>{{end}}-->

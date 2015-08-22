@@ -1,0 +1,56 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{template "title" .}} </title>
+	<link rel="stylesheet" href="{{static}}css/normalize.css">
+	<link rel="stylesheet" href="{{static}}css/main.css">
+	<link rel="stylesheet" href="{{static}}css/style.css">
+	<script src="{{static}}js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header-left">
+				<a href="/"><img src="{{static}}img/life_logo.png"></a>
+			</div>
+			<div class="header-right">
+				<form class="header-search_form" action="">
+					<input class="header-search_input" type="text" name="search" placeholder="Поиск по сайту">
+					<button class="header-search_button" type="submit">
+						<img src="{{static}}img/search_button.png" alt="submit" />
+					</button>
+				</form>
+			</div>
+		</header>
+		{{ template "layout" . }}
+		<footer class="footer">
+			<div class="footer-copyright">
+				© 2014 Лицей Life, Все права защищены<br>
+				г.Уфа, ул. Кольцевая 74
+			</div>
+			<div class="footer-email">
+				<a href="mailto:gbourbli@gmail.com">gbourbli@gmail.com</a><br>
+				(347) 242-18-32
+			</div>
+			<div class="footer-customer-logo">
+				<a href="http://rbli.ru" target="_blank">
+					Перейти на сайт
+					<img src="{{static}}img/rbli-logo.png">
+				</a>
+			</div>
+			<div class="footer-developer-logo">
+				<a href="http://webcycle.ru" target="_blank">
+					<img src="{{static}}img/developer-logo.png" alt="Разработка сайтов">
+				</a>
+			</div>
+		</footer>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="{{static}}js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="{{static}}js/plugins.js"></script>
+	<script src="{{static}}js/main.js"></script>
+	</body>
+	</html>
+	{{ end }}

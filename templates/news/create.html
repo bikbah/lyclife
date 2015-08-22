@@ -1,0 +1,20 @@
+{{define "title"}}Создать новость{{end}}
+{{define "content"}}
+<section class="news-create-wrap">
+	<header>
+		<h3>Создать новость</h3>
+	</header>
+	<form action="/news/1/create/" method="POST">
+		{{csrf_token .Context}}
+		<div class="elem">
+			<input class="title" type="text" name="news_title" placeholder="Заголовок..">
+		</div>
+		<div class="elem">
+			<textarea name="news_content" rows="15" cols="60"></textarea>
+		</div>
+		<div class="elem">
+			<input type="submit" value="Сохранить">
+		</div>
+	</form>
+</section>
+{{end}}

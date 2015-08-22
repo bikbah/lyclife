@@ -1,0 +1,13 @@
+{{define "title"}}{{.Results.Title}}{{end}}
+{{define "content"}}
+{{with .Results}}
+    <header>
+        <h2>{{.Title}}</h2>
+    </header>
+    <section>
+        <p>
+            {{.Content}}
+        </p>
+    </section>
+{{end}}
+{{end}}

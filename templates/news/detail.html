@@ -1,0 +1,22 @@
+{{define "title"}}{{.Results.Title}}{{end}}
+{{define "content"}}
+{{with .Results}}
+<section class="news-detail-wrap">
+    <div class="container">
+        <div class="item">
+            <header class="news-detail_header">
+                <span>{{ .Title }}</span>
+                <div>
+                    <a href="/news/{{ .Id }}/update/"><img class="news-edit_img" src="{{ static }}svg/edit.svg"></a>
+                    <a href="/news/{{ .Id }}/delete/"><img class="news-delete_img" src="{{ static }}svg/delete.svg"></a>
+                </div>
+            </header>
+            <section>
+                <p>{{ .Datetime }}</p>
+                <p>{{ .Content }}</p>
+            </section>
+        </div>
+    </div>
+</section>
+{{end}}
+{{end}}

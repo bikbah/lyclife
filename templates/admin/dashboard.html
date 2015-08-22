@@ -1,0 +1,13 @@
+{{define "title"}}Dashboard{{end}}
+{{define "content"}}
+{{if .Results}}
+<section>{{markdown .Results}}</section>
+{{else}}
+<h3>Write some markdown text here:</h3>
+<form action="/admin/" method="POST">
+  {{csrf_token .Context}}
+  <textarea name="md" cols="40" rows="20"></textarea>
+  <button>Submit</button>
+</form>
+{{end}}
+{{end}}

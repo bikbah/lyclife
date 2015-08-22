@@ -1,0 +1,58 @@
+{{define "title"}}Профиль{{end}}
+{{define "content"}}
+<section class="user-profile">
+    <div class="photo">
+        <img src="{{static}}img/teacher.jpg" alt="">
+    </div>
+    <div class="info">
+        <header>
+            Ваши данные
+        </header>
+        <form action="/auth/profile/" method="POST">
+            {{csrf_token .Context}}
+            <div class="row">
+                <label class="Input-label" for="lastname">Фамилия*</label>
+                <input class="Input-field" type="text" name="lastname" id="lastname" value="{{.User.LastName}}" required autofocus>
+            </div>
+            <div class="row">
+                <label class="Input-label" for="firstname">Имя*</label>
+                <input class="Input-field" type="text" name="firstname" id="firstname"  value="{{.User.FirstName}}" required>
+            </div>
+            <div class="row">
+                <label class="Input-label" for="middlename">Отчество</label>
+                <input class="Input-field" type="text" name="middlename" id="middlename"  value="{{.User.MiddleName}}">
+            </div>
+            {{if eq .User.UserType "student"}}
+            <div class="row">
+                <label class="Input-label" for="class">Класс</label>
+                <select class="Input-field" id="class" name="rbli_class">
+                    <option value="2">7А</option>
+                    <option value="3">7Б</option>
+                    <option value="4">7В</option>
+                    <option value="5">8А</option>
+                    <option value="6">8Б</option>
+                    <option value="7">8В</option>
+                    <option value="8">9А</option>
+                    <option value="9">9Б</option>
+                    <option value="10">9В</option>
+                    <option value="11">10А</option>
+                    <option value="12">10Б</option>
+                    <option value="13">10В</option>
+                    <option value="14">11А</option>
+                    <option value="15">11Б</option>
+                    <option value="16">11В</option>
+                </select>
+            </div>
+            {{end}}
+            {{if eq .User.UserType "tutor"}}
+            <div class="row">
+                <textarea name="desc" cols="30" rows="10">{{.User.Description}}</textarea>
+            </div>
+            {{end}}
+            <div class="row">
+                <input class="Input-field" type="submit" value="Сохранить">
+            </div>
+        </form>
+    </div>
+</section>
+{{end}}

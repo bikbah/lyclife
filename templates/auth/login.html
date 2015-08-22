@@ -1,0 +1,27 @@
+{{define "title"}}Войти{{end}}
+{{define "content"}}
+<form class="auth_form" method="POST" action="/auth/login/">
+	{{csrf_token .Context}}
+	{{if .Results}}<div class="login-error">{{.Results.Error}}</div>{{end}}
+	<div class="row">
+		<label for="email" class="Input-label">Email</label>
+		<input class="Input-field" type="text" name="email" id="email" autocomplete="on" placeholder="E-mail" required autofocus value="{{if.Results}}{{if .Results.NotOnlyError}}{{.Results.U.Email}}{{end}}{{end}}">
+	</div>
+	<div class="row">
+		<label class="Input-label" for="password">Пароль:</label>
+		<input class="Input-field" type="password" name="password" id="password" placeholder="Пароль" autocomplete="on" required>
+	</div>
+	<div class="row">
+		<label>
+			<input type="checkbox" value="1" name="remember_me" checked="checked" autocomplete="on">
+			<span>Помнить меня</span>
+		</label>
+		<a class="forgot" href="/auth/reset" rel="noreferrer">Забыл пароль?</a>
+	</div>
+	<div>
+		<input class="Input-field" type="submit" value="Войти">
+		<a href="/auth/register/">Регистрация</a>
+	</div>
+	<input type="hidden" name="redirect_after_login" value="/" autocomplete="on">
+</form>
+{{end}}

@@ -1,0 +1,65 @@
+{{define "title"}}Пользователи{{end}}
+{{define "content"}}
+<section class="admin-users">
+    <form action="/admin/users/" method="POST">
+        {{csrf_token .Context}}
+        <div class="row">
+            <label class="Input-label" for="email">Email</label>
+            <input class="Input-field" type="text" name="email" id="email" value="Email">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="password">Пароль</label>
+            <input class="Input-field" type="text" name="password" id="password" value="Пароль">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="surname">Фамилия</label>
+            <input class="Input-field" type="text" name="surname" id="surname" value="Фамилия">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="name">Имя</label>
+            <input class="Input-field" type="text" name="name" id="name" value="Имя">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="patronymic">Отчество</label>
+            <input class="Input-field" type="text" name="patronymic" id="patronymic" value="Отчество">
+        </div>
+        <div class="row">
+            <label class="Input-label" for="type">Тип</label>
+            <select class="Input-field" name="user_type" id="type">
+                <option value="student">Ученик</option>
+                <option value="teacher">Учитель</option>
+                <option value="tutor">Воспитатель</option>
+            </select>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="class">Класс</label>
+            <select class="Input-field" id="class" name="rbli_class">
+                <option value="1">Выберите из списка</option>
+                <option value="2">7А</option>
+                <option value="3">7Б</option>
+                <option value="4">7В</option>
+                <option value="5">8А</option>
+                <option value="6">8Б</option>
+                <option value="7">8В</option>
+                <option value="8">9А</option>
+                <option value="9">9Б</option>
+                <option value="10">9В</option>
+                <option value="11">10А</option>
+                <option value="12">10Б</option>
+                <option value="13">10В</option>
+                <option value="14">11А</option>
+                <option value="15">11Б</option>
+                <option value="16">11В</option>
+            </select>
+        </div>
+        <div class="row">
+            <textarea name="desc" id="" cols="30" rows="10">Описание</textarea>
+        </div>
+        <div class="row">
+            <label class="Input-label" for="super">Админ</label>
+            <input type="checkbox" id="super" name="super_user">
+        </div>
+        <input class="Input-field" type="submit" value="Добавить пользователя">
+    </form>
+</section>
+{{end}}
